@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DapperUI.Dtos.ProductDtos;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstateDapper.Dtos.ProductDtos;
 
 namespace DapperUI.ViewComponents.HomePage
 {
@@ -16,7 +16,7 @@ namespace DapperUI.ViewComponents.HomePage
         public async Task <IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("http://localhost:28977/api/Products/GetProductByDealOfTheDayTrueWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:44334/api/Products/ProductListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData=await responseMessage.Content.ReadAsStringAsync();
